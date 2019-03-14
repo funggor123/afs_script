@@ -41,21 +41,24 @@ if [ "$is_go_installed" = true ] ; then
        export GOROOT=/usr/local/go
        export GOPATH=$HOME/go
        export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-       echo "--------------(2)--Install Git----------------" 
+       echo "--------------(2)--Install Git---------------" 
        if which git >/dev/null; then
             echo "Git is detected" 
        else
             echo "Git is not detected, is going to install now" 
             sudo apt-get install git
        fi
-
-       echo "--------------(3)--Install Go Libraries----------------" 
+       echo "--------------(3)--Install Go Libraries------" 
+       cd ~/go/src
+       mkdir -p  golang.org/x/
+       cd golang.org/x
+       git clone https://github.com/golang/sys.git
        echo "Installing github.com/gin-gonic/gin..."
        go get github.com/gin-gonic/gin
        echo "Installing encoding/json..."
        go get encoding/json
        echo "Installing Go Libraries Finish..."
-       echo "--------------(4)--Make Configuration File--------------" 
+       echo "--------------(4)--Make Configuration File---" 
        echo "Making Configuration File (Press Enter to use default setting)"
        echo "Please input x64_program_path (Default: /ks/afs_1e/): "
        read x64_program_path
@@ -77,7 +80,7 @@ if [ "$is_go_installed" = true ] ; then
        if [ -z "$host_port" ] ; then
               echo host_port="8080"
        fi
-       echo "--------------(6)--Clone the source code--------------" 
+       echo "--------------(5)--Clone the source code-----" 
        echo "Cloning the Program (UserName: isnsastri , Password: astrisns1)"
        cd $install_path
        git clone http://isnsastri@github.com/s31b18/afs_rnode.git 
@@ -110,8 +113,7 @@ if [ "$is_go_installed" = true ] ; then
                      \"notify\" : \"file/notify/:afid\"
               }
        }" >> $go_path_back
-       
-       echo "--------------Installation Complete--------------" 
+       echo "--------------Installation Complete----------" 
        exit 1
 else
        echo "Installation Fail"
