@@ -85,8 +85,8 @@ if [ "$is_go_installed" = true ] ; then
        cd $install_path
        git clone http://isnsastri@github.com/s31b18/afs_rnode.git 
 
-       go_path=$install_path
-       go_path+="afs_rnode/conf.json"
+       b="afs_rnode/conf.json"
+       go_path=$install_path$b
        rm -r $go_path
        echo "{
                \"x64_program_path\": \""$x64_program_path"\",
@@ -100,8 +100,8 @@ if [ "$is_go_installed" = true ] ; then
               }
        }" >> $go_path
 
-       go_path_back=$install_path
-       go_path_back+="afs_rnode/conf_back.json"
+       b="afs_rnode/conf_back.json"
+       go_path_back=$install_path$b
        echo "{
                \"x64_program_path\": \""$x64_program_path"\",
                \"x64_program_name\": \""$x64_program_name"\",
