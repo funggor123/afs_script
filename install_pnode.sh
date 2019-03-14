@@ -65,7 +65,8 @@ if [ "$is_go_installed" = true ] ; then
        cd $install_path
        git clone http://isnsastri@github.com/s31b18/afs_pnode.git 
        echo "--------------(4)--Install Ngrok------" 
-       cd $install_path/afs_pnode
+       a=afs_pnode
+       cd $install_path$a
        echo "Cloning Ngrok"
        git clone https://github.com/inconshreveable/ngrok.git
        echo "Installing Ngrok"
