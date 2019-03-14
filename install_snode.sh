@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "----------------Install the Retrieval Node----------------"
+echo "----------------Install the Search Node----------------"
 echo "--------------(1)--Install Go----------------" 
 is_go_installed=false
 if which go >/dev/null; then
@@ -120,7 +120,7 @@ if [ "$is_go_installed" = true ] ; then
        go_path=$install_path$b
        rm -r $go_path
        echo "{
-               \"retrivel_node_web_url\": [ \" "$retrivel_node_web_url"\" ] ,
+               \"retrivel_node_web_url\": [ \""$retrivel_node_web_url"\" ] ,
                \"retrivel_node_url\": [ \""$retrivel_node_url"\" ] ,
                \"crawl_second\": $crawl_second,
                \"clear\": $clear,
@@ -137,7 +137,7 @@ if [ "$is_go_installed" = true ] ; then
        b="afs_snode/conf_back.json"
        go_path_back=$install_path$b
        echo "{
-               \"retrivel_node_web_url\": [ \" "$retrivel_node_web_url"\" ] ,
+               \"retrivel_node_web_url\": [ \""$retrivel_node_web_url"\" ] ,
                \"retrivel_node_url\": [ \""$retrivel_node_url"\" ] ,
                \"crawl_second\": $crawl_second,
                \"clear\": $clear,
