@@ -1,7 +1,13 @@
 #!/bin/bash
 
 echo "----------------Install the Search Node----------------"
-echo "--------------(1)--Install Go----------------" 
+echo "--------------(1)--Install bzr----------------" 
+if which bar >/dev/null; then
+    echo "bar is detected, no need to install" 
+else
+    apt-get install bzr
+fi
+echo "--------------(2)--Install Go----------------" 
 is_go_installed=false
 if which go >/dev/null; then
     echo "Go is detected, no need to install" 
