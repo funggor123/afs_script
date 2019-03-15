@@ -125,6 +125,12 @@ if [ "$is_go_installed" = true ] ; then
                      \"notify\" : \"file/notify/:afid\"
               }
        }" >> $go_path_back
+
+       echo "
+	      export GOROOT=$goroot
+              export GOPATH=$gopath
+              export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+       " >> ./gosource
        echo "--------------Installation Complete----------" 
        exit 1
 else
