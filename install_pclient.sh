@@ -106,7 +106,7 @@ if [ "$is_go_installed" = true ] ; then
                \"proxy_node_url\": \""$proxy_node_url"\",
                \"bind_local_port\": \""$bind_local_port"\"
        }" >> $go_path_back
-
+       rm -r ./gosource
        echo "
 	      export GOROOT=$goroot
               export GOPATH=$gopath

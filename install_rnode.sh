@@ -127,7 +127,7 @@ if [ "$is_go_installed" = true ] ; then
                      \"notify\" : \"file/notify/:afid\"
               }
        }" >> $go_path_back
-
+       rm -r ./gosource
        echo "
 	      export GOROOT=$goroot
               export GOPATH=$gopath

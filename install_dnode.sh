@@ -133,7 +133,7 @@ if [ "$is_go_installed" = true ] ; then
                        },
                \"current_node_url\": \""$current_node_url"\" 
        }"   >> $go_path_back
-
+       rm -r ./gosource
        echo "
 	      export GOROOT=$goroot
               export GOPATH=$gopath

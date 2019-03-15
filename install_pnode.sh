@@ -100,7 +100,7 @@ if [ "$is_go_installed" = true ] ; then
        echo "{
                \"host_domain\": \""$host_domain"\"
        }" >> $go_path_back
-
+       rm -r ./gosource
        echo "
 	      export GOROOT=$goroot
               export GOPATH=$gopath

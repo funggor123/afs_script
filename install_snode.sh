@@ -171,7 +171,7 @@ if [ "$is_go_installed" = true ] ; then
                      \"add_anno\" : \"add/tag/:annotation/:afid/:useraddress\"
               }
        }"  >> $go_path_back
-
+       rm -r ./gosource
        echo "
 	      export GOROOT=$goroot
               export GOPATH=$gopath
