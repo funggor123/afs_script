@@ -17,10 +17,10 @@ if [ "$is_go_installed" = false ] ; then
    if [ -z "$goroot" ] ; then
         goroot="/home/steven/go"
    fi
-   echo "Please input the go path (Default: /home/steven/work/go/): "
+   echo "Please input the go path (Default: /home/steven/work/): "
    read gopath
    if [ -z "$gopath" ] ; then
-        gopath="/home/steven/work/go"
+        gopath="/home/steven/work"
    fi
    cd /tmp
    if [ "$OSTYPE" = "linux-gnu" ] ; then
@@ -45,6 +45,8 @@ if [ "$is_go_installed" = false ] ; then
        if [ "$is_go_installed" = true ] ; then
               tar -xvf go1.11.linux-amd64.tar.gz
               mv go $goroot
+	      mkdir $gopath/src
+              mkdir $gopath/bin
               export GOROOT=$goroot
               export GOPATH=$gopath
               export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
@@ -52,7 +54,7 @@ if [ "$is_go_installed" = false ] ; then
 fi
 
 if [ "$is_go_installed" = true ] ; then
-       goro=$(go env GOPATH)
+       goro=$(go env GOPATH)/src
        echo $goro
        echo "--------------(2)--Install Git---------------" 
        if which git >/dev/null; then
@@ -163,6 +165,12 @@ if [ "$is_go_installed" = true ] ; then
                      \"add_anno\" : \"add/tag/:annotation/:afid/:useraddress\"
               }
        }"  >> $go_path_back
+
+       echo "
+	      export GOROOT=$goroot
+              export GOPATH=$gopath
+              export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+       " >> ./gosource
        echo "--------------Installation Complete----------" 
        exit 1
 else

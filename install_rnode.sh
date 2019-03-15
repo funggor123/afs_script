@@ -44,11 +44,11 @@ if [ "$is_go_installed" = false ] ; then
        if [ "$is_go_installed" = true ] ; then
               tar -xvf go1.11.linux-amd64.tar.gz
               mv go $goroot
+	      mkdir $gopath/src
+              mkdir $gopath/bin
               export GOROOT=$goroot
               export GOPATH=$gopath
               export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-	      mkdir $gopath/src
-              mkdir $gopath/bin
        fi
 fi
 
