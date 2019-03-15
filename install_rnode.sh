@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/ksh
 
 echo "----------------Install the Retrieval Node----------------"
 echo "--------------(1)--Install Go----------------" 
@@ -9,9 +9,18 @@ if which go >/dev/null; then
 else
     is_go_installed=false
 fi
-
 if [ "$is_go_installed" = false ] ; then
-   echo "Go is not detected, is going to install now" 
+   echo "Go is not detected, is going to install now"
+   echo "Please input the go root (Default: /home/steven/go/): "
+   read goroot
+   if [ -z "$goroot" ] ; then
+        goroot="/home/steven/go"
+   fi
+   echo "Please input the go path (Default: /home/steven/work/go/): "
+   read gopath
+   if [ -z "$gopath" ] ; then
+        gopath="/home/steven/work/go"
+   fi
    cd /tmp
    if [[ "$OSTYPE" == "linux-gnu" ]]; then
        wget https://dl.google.com/go/go1.11.linux-amd64.tar.gz
@@ -29,15 +38,16 @@ if [ "$is_go_installed" = false ] ; then
    elif [[ "$OSTYPE" == "freebsd"* ]]; then
        echo "Sorry you are runnung in an unSupported System"
    else
-       echo "Sorry you are runnung in an unSupported System"
+       wget https://dl.google.com/go/go1.11.linux-amd64.tar.gz
+       is_go_installed=true
        fi
        if [ "$is_go_installed" = true ] ; then
               tar -xvf go1.11.linux-amd64.tar.gz
-              mv go /usr/local
+              mv go gopath
+              export GOROOT=$goroot
+              export GOPATH=$gopath
+              export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
        fi
-       export GOROOT=/usr/local/go
-       export GOPATH=$HOME/go
-       export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 fi
 
 if [ "$is_go_installed" = true ] ; then
