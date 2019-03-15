@@ -34,13 +34,14 @@ if [ "$is_go_installed" = false ] ; then
        if [ "$is_go_installed" = true ] ; then
               tar -xvf go1.11.linux-amd64.tar.gz
               mv go /usr/local
+      	      export GOROOT=/usr/local/go
+              export GOPATH=$HOME/go
+              export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
        fi
 fi
 
 if [ "$is_go_installed" = true ] ; then
-       export GOROOT=/usr/local/go
-       export GOPATH=$HOME/go
-       export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+       goroot= [go env GOPATH]
        echo "--------------(2)--Install Git---------------" 
        if which git >/dev/null; then
             echo "Git is detected" 
@@ -49,7 +50,7 @@ if [ "$is_go_installed" = true ] ; then
             sudo apt-get install git
        fi
        echo "--------------(3)--Install Go Libraries------" 
-       cd ~/go/src
+       cd $goroot
        mkdir -p  golang.org/x/
        cd golang.org/x
        git clone https://github.com/golang/sys.git
