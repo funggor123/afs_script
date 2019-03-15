@@ -41,7 +41,8 @@ if [ "$is_go_installed" = false ] ; then
 fi
 
 if [ "$is_go_installed" = true ] ; then
-       goroot= [go env GOPATH]
+       goro=$(go env GOPATH)
+       echo $goro
        echo "--------------(2)--Install Git---------------" 
        if which git >/dev/null; then
             echo "Git is detected" 
@@ -50,7 +51,7 @@ if [ "$is_go_installed" = true ] ; then
             sudo apt-get install git
        fi
        echo "--------------(3)--Install Go Libraries------" 
-       cd $goroot
+       cd $goro
        mkdir -p  golang.org/x/
        cd golang.org/x
        git clone https://github.com/golang/sys.git
