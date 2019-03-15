@@ -22,20 +22,20 @@ if [ "$is_go_installed" = false ] ; then
         gopath="/home/steven/work/go"
    fi
    cd /tmp
-   if [[ "$OSTYPE" == "linux-gnu" ]]; then
+   if [ "$OSTYPE" = "linux-gnu" ] ; then
        wget https://dl.google.com/go/go1.11.linux-amd64.tar.gz
        is_go_installed=true
-   elif [[ "$OSTYPE" == "darwin"* ]]; then
+   elif [ "$OSTYPE" = "darwin"* ] ; then
        wget https://dl.google.com/go/go1.12.darwin-amd64.pkg
        is_go_installed=true
-   elif [[ "$OSTYPE" == "cygwin" ]]; then
+   elif [ "$OSTYPE" = "cygwin" ] ; then
        echo "Sorry you are runnung in an unSupported System"
-   elif [[ "$OSTYPE" == "msys" ]]; then
+   elif [ "$OSTYPE" = "msys" ] ; then
        echo "Sorry you are runnung in an unSupported System"
-   elif [[ "$OSTYPE" == "win32" ]]; then
+   elif [ "$OSTYPE" = "win32" ] ; then
        wget https://dl.google.com/go/go1.12.windows-amd64.msi
        is_go_installed=true
-   elif [[ "$OSTYPE" == "freebsd"* ]]; then
+   elif [ "$OSTYPE" = "freebsd"* ] ; then
        echo "Sorry you are runnung in an unSupported System"
    else
        wget https://dl.google.com/go/go1.11.linux-amd64.tar.gz
