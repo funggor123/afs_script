@@ -47,6 +47,8 @@ if [ "$is_go_installed" = false ] ; then
               export GOROOT=$goroot
               export GOPATH=$gopath
               export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+	      mkdir $gopath/src
+              mkdir $gopath/bin
        fi
 fi
 
